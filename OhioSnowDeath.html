@@ -1,0 +1,40 @@
+<head>
+  <title>Ohio Snow Death</title>
+</head>
+
+<body>
+  {{> hello }}
+  {{> counties }}
+</body>
+
+<template name="hello">
+  <h1>Hello Bitches!</h1>
+  {{greeting}}
+</template>
+
+<template name="counties">
+    <table>
+        <thead>
+            <tr>
+                <th>County</th>
+                <th>Snow Death Level</th>
+                <th>Report Date</th>
+                <th>Reported By</th>
+            </tr>
+        </thead>
+        <tbody>
+          {{#each counties}}
+            <tr>{{> county}}</tr>
+          {{else}}
+            <tr><td/><td colspan="4">No counties found</td></tr>
+          {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="county">
+    <td>{{ name }}</td>
+    <td>???</td>
+    <td>???</td>
+    <td>???</td>
+</template>
