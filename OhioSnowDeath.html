@@ -3,38 +3,42 @@
 </head>
 
 <body>
-  {{> hello }}
+  {{> header }}
   {{> counties }}
 </body>
 
-<template name="hello">
-  <h1>Hello Bitches!</h1>
-  {{greeting}}
+<template name="header">
+  <header>
+    <h1>{{title}}</h1>
+    <h2>{{tagline}}</h2>
+  </header>
 </template>
 
 <template name="counties">
+  <content>
     <table>
-        <thead>
-            <tr>
-                <th>County</th>
-                <th>Snow Death Level</th>
-                <th>Report Date</th>
-                <th>Reported By</th>
-            </tr>
-        </thead>
-        <tbody>
-          {{#each counties}}
-            <tr>{{> county}}</tr>
-          {{else}}
-            <tr><td/><td colspan="4">No counties found</td></tr>
-          {{/each}}
-        </tbody>
+      <thead>
+        <tr>
+          <th>County</th>
+          <th>Snow Death Level</th>
+          <th>Report Date</th>
+          <th>Reported By</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each counties}}
+          <tr>{{> county}}</tr>
+        {{else}}
+          <tr><td/><td colspan="4">No counties found</td></tr>
+        {{/each}}
+      </tbody>
     </table>
+  </content>
 </template>
 
 <template name="county">
-    <td>{{ name }}</td>
-    <td>???</td>
-    <td>???</td>
-    <td>???</td>
+  <td>{{ name }}</td>
+  <td>???</td>
+  <td>???</td>
+  <td>???</td>
 </template>

@@ -1,1 +1,17 @@
 /* CSS declarations go here */
+body {
+    font: 15px helvetica, sans-serif;
+}
+
+h1 {
+    color: #408AD2;
+}
+
+h2 {
+    color: #FFB140;
+}
+    
+
+th, td {
+    padding:5px;
+}
