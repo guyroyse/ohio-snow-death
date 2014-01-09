@@ -11,13 +11,35 @@ if (Meteor.isClient) {
     return "Getting to SnowMash couldn't be more fun!";
   };
 
+  Template.header.events = {
+    'click #signIn' : function() {
+      Meteor.loginWithTwitter();
+    }
+  };
+
   Template.counties.counties = function() {
     return Counties.find({}, { sort: ['name', 'ascThis']});   
   };
 
 }
 
-// if (Meteor.isServer) {
+if (Meteor.isServer) {
+
+  Meteor.startup(function() {
+
+    Accounts.loginServiceConfiguration.remove({
+      service: "twitter"
+    });
+
+    Accounts.loginServiceConfiguration.insert({
+      service: "twitter",
+      consumerKey: "8f8eKkgbwO80MEYZ97MYfA",
+      secret: "DPneD4L49wgO86gXHEcd6MZcmT8HlJGO1Axdnra3OM"
+    });
+
+  });
+
+};
 //     var require = __meteor_bootstrap__.require;
 //     var OAuth = require('oauth').OAuth;
 //     var oauth = new OAuth(

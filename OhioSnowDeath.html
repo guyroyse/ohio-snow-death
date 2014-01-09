@@ -11,6 +11,11 @@
   <header>
     <h1>{{title}}</h1>
     <h2>{{tagline}}</h2>
+    {{#if currentUser}}
+      Logged in as {{currentUser.services.twitter.screenName}}!
+    {{else}}
+      <img id="signIn" src="sign-in-with-twitter-gray.png" />
+    {{/if}}
   </header>
 </template>
 
