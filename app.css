@@ -3,6 +3,32 @@ body {
     font: 15px helvetica, sans-serif;
 }
 
+header {
+}
+
+#login {
+
+}
+
+#login > img {
+  margin-right: 10px;
+  float: left;
+}
+
+#twitterName {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#twitterId {
+  margin-top: 0;
+  font-size: 13px;
+}
+
+content {
+  clear: both;
+}
+
 h1 {
     color: #408AD2;
 }
@@ -10,7 +36,6 @@ h1 {
 h2 {
     color: #FFB140;
 }
-    
 
 th, td {
     padding:5px;

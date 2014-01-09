@@ -16,10 +16,11 @@
 </template>
 
 <template name="login">
-  <aside>
+  <aside id="login">
     {{#if currentUser}}
-      <p>Logged in as {{currentUser.services.twitter.screenName}}!</p>
       <img src="{{currentUser.services.twitter.profile_image_url}}" />
+      <p id="twitterName">{{currentUser.profile.name}}</p>
+      <p id="twitterId">@{{currentUser.services.twitter.screenName}}</p>
     {{else}}
       <img id="signIn" src="sign-in-with-twitter-gray.png" />
     {{/if}}
