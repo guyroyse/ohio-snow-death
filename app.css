@@ -1,8 +1,4 @@
 /* CSS declarations go here */
-body {
-    font: 15px helvetica, sans-serif;
-}
-
 header {
 }
 
@@ -11,8 +7,9 @@ header {
 }
 
 #login > img {
-  margin-right: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   float: left;
+  margin-right: 10px;
 }
 
 #twitterName {
@@ -22,7 +19,6 @@ header {
 
 #twitterId {
   margin-top: 0;
-  font-size: 13px;
 }
 
 content {
@@ -38,5 +34,6 @@ h2 {
 }
 
 th, td {
-    padding:5px;
+    padding: 5px;
+    text-align: left;
 }

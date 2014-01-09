@@ -4,19 +4,28 @@
 
 <body>
   {{> header }}
-  {{> login }}
-  {{> counties }}
+  {{> container }}
 </body>
 
 <template name="header">
   <header>
-    <h1>{{title}}</h1>
-    <h2>{{tagline}}</h2>
+    <div class="container-fluid">
+      <h1>{{title}}</h1>
+      <h2>{{tagline}}</h2>
+    </div>
   </header>
 </template>
 
+<template name="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      {{> login }}
+      {{> counties }}
+    </div>
+</template>
+
 <template name="login">
-  <aside id="login">
+  <div id="login" class="span2">
     {{#if currentUser}}
       <img src="{{currentUser.services.twitter.profile_image_url}}" />
       <p id="twitterName">{{currentUser.profile.name}}</p>
@@ -24,12 +33,12 @@
     {{else}}
       <img id="signIn" src="sign-in-with-twitter-gray.png" />
     {{/if}}
-  </aside>
+  </div>
 </template>
 
 <template name="counties">
-  <content>
-    <table>
+  <div class="span10">
+    <table class="table table-striped table-hover table-condensed">
       <thead>
         <tr>
           <th>County</th>
@@ -46,7 +55,7 @@
         {{/each}}
       </tbody>
     </table>
-  </content>
+  </div>
 </template>
 
 <template name="county">
