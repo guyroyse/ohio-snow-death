@@ -4,6 +4,7 @@
 
 <body>
   {{> header }}
+  {{> login }}
   {{> counties }}
 </body>
 
@@ -11,12 +12,18 @@
   <header>
     <h1>{{title}}</h1>
     <h2>{{tagline}}</h2>
+  </header>
+</template>
+
+<template name="login">
+  <aside>
     {{#if currentUser}}
-      Logged in as {{currentUser.services.twitter.screenName}}!
+      <p>Logged in as {{currentUser.services.twitter.screenName}}!</p>
+      <img src="{{currentUser.services.twitter.profile_image_url}}" />
     {{else}}
       <img id="signIn" src="sign-in-with-twitter-gray.png" />
     {{/if}}
-  </header>
+  </aside>
 </template>
 
 <template name="counties">
@@ -47,3 +54,4 @@
   <td>???</td>
   <td>???</td>
 </template>
+
