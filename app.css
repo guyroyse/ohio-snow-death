@@ -11,6 +11,9 @@ header {
   float: left;
   margin-right: 10px;
 }
+img#signIn {
+  box-shadow: none;
+} 
 
 #twitterName {
   font-weight: bold;
