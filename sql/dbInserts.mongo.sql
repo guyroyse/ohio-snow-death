@@ -86,3 +86,7 @@ db.counties.insert( { name: "Wayne" } )
 db.counties.insert( { name: "Williams" } )
 db.counties.insert( { name: "Wood" } )
 db.counties.insert( { name: "Wyandot" } )
+
+db.slowlevels.insert( { name: "Hoth", level: "3" } )
+db.slowlevels.insert( { name: "Caradhras", level: "2" } )
+db.slowlevels.insert( { name: "Narnia", level: "1" } )

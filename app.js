@@ -1,5 +1,6 @@
 Counties = new Meteor.Collection('counties');
 Reports = new Meteor.Collection('reports');
+Snowlevels = new Meteor.Collection('snowlevels');
 
 if (Meteor.isClient) {
 
@@ -18,8 +19,12 @@ if (Meteor.isClient) {
   };
 
   Template.counties.counties = function() {
-    return Counties.find({}, { sort: ['name', 'asc']});   
+    return Counties.find({}, { sort: ['name', 'asc'] });   
   };
+
+  Template.snowlevels.snowlevels = function() {
+    return Snowlevels.find({}, { sort: ['level', 'desc'] });
+  }
 
 }
 
