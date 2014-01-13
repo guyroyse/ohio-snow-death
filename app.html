@@ -59,16 +59,18 @@
 </template>
 
 <template name="county">
-  <td>{{ name }}</td>
-  <td>{{> snowlevels }}</td>
-  <td>???</td>
-  <td>???</td>
+  <td>{{ name }} <input type="hidden" name="countyId" value="{{ _id }}" /></td>
+  <td>
+    <select name="snowlevels" id="snowlevels" data-county="{{ _id }}">
+      {{> snowlevels }}
+    </select>
+  </td>
+  <td class="reportdate">???</td>
+  <td class="reportedby">???</td>
 </template>
 
 <template name="snowlevels">
-  <select name="snowlevels">
     {{#each snowlevels}}
-      <option value="{{ level }}">{{ name }}</option>
+      <option value="{{ _id }}">{{ name }}</option>
     {{/each}}
-  </select>
 </template>
