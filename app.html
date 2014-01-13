@@ -65,8 +65,20 @@
       {{> snowlevels }}
     </select>
   </td>
-  <td class="reportdate">???</td>
-  <td class="reportedby">???</td>
+  <td class="reportdate">
+    {{#if reportdate }}
+      {{ reportdate }}
+    {{else}}
+      No reported emergencies
+    {{/if}}
+  </td>
+  <td class="reportedby">
+    {{#if reportedby }}
+      {{ reportedby }}
+    {{else}}
+      No reported emergencies
+    {{/if}}
+  </td>
 </template>
 
 <template name="snowlevels">
