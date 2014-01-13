@@ -90,4 +90,4 @@ db.counties.insert( { name: "Wyandot", snowlevel: 'ObjectId("52d33adb247750fae14
 db.snowlevels.insert( { name: "Hoth", level: "3" } )
 db.snowlevels.insert( { name: "Caradhras", level: "2" } )
 db.snowlevels.insert( { name: "Narnia", level: "1" } )
-db.snowlevels.insert( { name: "Elysium", level: "0" })
+db.snowlevels.insert( { name: "Elysium", level: "0" } )
