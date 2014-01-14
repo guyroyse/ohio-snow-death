@@ -40,10 +40,10 @@ if (Meteor.isClient) {
 
       // This isn't working yet... Must learn all the things
       if (Meteor.user()) {
-        console.log('About to commit changes');
+        console.log('About to commit changes for county ' + $(event.currentTarget.parentNode).siblings('td.county').text());
 
         var countyName = $(event.currentTarget.parentNode).siblings('td.county').text();
-        var countyId = Counties.findOne({name: 'Adams'});
+        var countyId = Counties.findOne({name: countyName});
 
         Counties.update( { _id:  countyId._id },
           { $set: {
@@ -67,6 +67,7 @@ if (Meteor.isClient) {
   };
 
   Handlebars.registerHelper('isSelectedSnowLevel', function (foo, bar) {
+    console.log("foo: " + foo + " bar: " + bar);
     return foo == bar ? 'selected' : '';
   });
 

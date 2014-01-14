@@ -49,7 +49,7 @@
       </thead>
       <tbody>
         {{#each counties}}
-          <tr>{{>county }}</tr>
+          <tr>{{> county }}</tr>
         {{else}}
           <tr><td/><td colspan="4">No counties found</td></tr>
         {{/each}}
@@ -61,7 +61,7 @@
 <template name="county">
   <td class="county" data-countyId="{{ _id }}">{{ name }}</td>
   <td class="snowlevel">
-      {{>snowlevels this }}
+      {{> snowlevels }}
   </td>
   <td class="reportdate">
     {{#if reportdate }}
@@ -82,7 +82,7 @@
 <template name="snowlevels">
   <select name="snowlevels">
     {{#each snowlevels}}
-      <option value="{{ name }}" {{ isSelectedSnowLevel foo "{{ this.snowlevel }}"}}>{{ name }}</option>
+      <option value="{{ name }}" {{ isSelectedSnowLevel ../snowlevel name}}>{{ name }}</option>
     {{/each}}
   </select>
 </template>
