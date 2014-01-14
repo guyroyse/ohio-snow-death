@@ -22,13 +22,7 @@ if (Meteor.isClient) {
 
   Template.login.events = {
     'click #signIn' : function() {
-      Meteor.loginWithTwitter(function(error) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('BooYAH!');
-        }
-      });
+      Meteor.loginWithTwitter();
     }
   };
 
@@ -38,10 +32,9 @@ if (Meteor.isClient) {
 
       var reportDate = new Date();
 
-      // This isn't working yet... Must learn all the things
       if (Meteor.user()) {
         var countyName = $(event.currentTarget.parentNode).siblings('td.county').text();
-        var countyId = Counties.findOne({name: countyName});
+        var countyId = Counties.findOne({ name: countyName });
 
         Counties.update( { _id:  countyId._id },
           { $set: {
@@ -67,6 +60,7 @@ if (Meteor.isClient) {
     return foo == bar ? 'selected' : '';
   });
 
+  // Need to find a plugin to do this for us... Date parsing is not fun
   Handlebars.registerHelper('formatDate', function(datetime) {
     var myDate = new Date(datetime);
     return (myDate.getMonth() <= 8 ? '0' + (myDate.getMonth() + 1) : myDate.getMonth() + 1) + '/' + (myDate.getDate() <= 9 ? '0' + (myDate.getDate() + 1) : myDate.getDate() + 1) + '/' + myDate.getFullYear() + ' ' + (myDate.getHours() <= 9 ? '0' + myDate.getHours() : myDate.getHours()) + ':' + (myDate.getMinutes() <= 9 ? '0' + myDate.getMinutes() : myDate.getMinutes());
