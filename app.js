@@ -40,8 +40,6 @@ if (Meteor.isClient) {
 
       // This isn't working yet... Must learn all the things
       if (Meteor.user()) {
-        console.log('About to commit changes for county ' + $(event.currentTarget.parentNode).siblings('td.county').text());
-
         var countyName = $(event.currentTarget.parentNode).siblings('td.county').text();
         var countyId = Counties.findOne({name: countyName});
 
@@ -60,14 +58,12 @@ if (Meteor.isClient) {
   Template.snowlevels.events = {
     'change': function(e, tmpl) {
       if (Meteor.user()) {
-        console.log('target: ' + e.target.value);
         snowLevel = e.target.value;
       }
     }
   };
 
   Handlebars.registerHelper('isSelectedSnowLevel', function (foo, bar) {
-    console.log("foo: " + foo + " bar: " + bar);
     return foo == bar ? 'selected' : '';
   });
 
