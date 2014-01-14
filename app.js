@@ -1,5 +1,5 @@
-Counties = new Meteor.Collection('counties');
-Snowlevels = new Meteor.Collection('snowlevels');
+var Counties = new Meteor.Collection('counties'),
+    Snowlevels = new Meteor.Collection('snowlevels');
 
 if (Meteor.isClient) {
   var snowLevel;
@@ -65,6 +65,11 @@ if (Meteor.isClient) {
 
   Handlebars.registerHelper('isSelectedSnowLevel', function (foo, bar) {
     return foo == bar ? 'selected' : '';
+  });
+
+  Handlebars.registerHelper('formatDate', function(datetime) {
+    var myDate = new Date(datetime);
+    return (myDate.getMonth() <= 8 ? '0' + (myDate.getMonth() + 1) : myDate.getMonth() + 1) + '/' + (myDate.getDate() <= 9 ? '0' + (myDate.getDate() + 1) : myDate.getDate() + 1) + '/' + myDate.getFullYear() + ' ' + (myDate.getHours() <= 9 ? '0' + myDate.getHours() : myDate.getHours()) + ':' + (myDate.getMinutes() <= 9 ? '0' + myDate.getMinutes() : myDate.getMinutes());
   });
 
 }
