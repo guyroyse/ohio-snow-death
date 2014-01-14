@@ -8,6 +8,6 @@ autopublish
 insecure
 preserve-inputs
 underscore
-accounts-twitter
 bootstrap
 jquery
+accounts-twitter

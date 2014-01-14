@@ -2,6 +2,7 @@ Counties = new Meteor.Collection('counties');
 Snowlevels = new Meteor.Collection('snowlevels');
 
 if (Meteor.isClient) {
+  var snowLevel;
 
   Template.header.title = function() {
     return "Ohio Snow Death";
@@ -21,11 +22,17 @@ if (Meteor.isClient) {
 
   Template.login.events = {
     'click #signIn' : function() {
-      Meteor.loginWithTwitter();
+      Meteor.loginWithTwitter(function(error) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('BooYAH!');
+        }
+      });
     }
   };
 
-  Template.snowlevels.events = {
+  Template.county.events = {
     'change': function(e, tmpl) {
       e.preventDefault();
 
@@ -33,20 +40,34 @@ if (Meteor.isClient) {
 
       // This isn't working yet... Must learn all the things
       if (Meteor.user()) {
-        Counties.update( { _id: tmpl.find('#snowlevels').attr('data-county').value }, 
-          { 
-            name: tmpl.county.value, 
-            snowlevel: tmpl.find('#snowlevels').selectedValue, 
-            reportdate: reportDate, 
-            reportedby: Meteor.user().services.twitter.screenName
-          },
-          { upsert: true }
-        );
+        console.log('About to commit changes');
 
-      tmpl.find('.reportdate').innerHTML(reportDate);
-      tmpl.find('.reportedby').innerHTML(Meteor.user().services.twitter.screenName);
+        var countyName = $(event.currentTarget.parentNode).siblings('td.county').text();
+        var countyId = Counties.findOne({name: 'Adams'});
+
+        Counties.update( { _id:  countyId._id },
+          { $set: {
+              snowlevel: snowLevel, 
+              reportdate: reportDate, 
+              reportedby: Meteor.user().services.twitter.screenName
+            }
+          }
+        );
       }
     }
   };
+
+  Template.snowlevels.events = {
+    'change': function(e, tmpl) {
+      if (Meteor.user()) {
+        console.log('target: ' + e.target.value);
+        snowLevel = e.target.value;
+      }
+    }
+  };
+
+  Handlebars.registerHelper('isSelectedSnowLevel', function (foo, bar) {
+    return foo == bar ? 'selected' : '';
+  });
 
 }
