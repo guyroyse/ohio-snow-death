@@ -2,7 +2,6 @@ var Counties = new Meteor.Collection('counties'),
     Snowlevels = new Meteor.Collection('snowlevels');
 
 if (Meteor.isClient) {
-  var snowLevel;
 
   Template.header.title = function() {
     return "Ohio Snow Death";
@@ -38,20 +37,12 @@ if (Meteor.isClient) {
 
         Counties.update( { _id:  countyId._id },
           { $set: {
-              snowlevel: snowLevel, 
+              snowlevel: e.target.value, 
               reportdate: reportDate, 
               reportedby: Meteor.user().services.twitter.screenName
             }
           }
         );
-      }
-    }
-  };
-
-  Template.snowlevels.events = {
-    'change': function(e, tmpl) {
-      if (Meteor.user()) {
-        snowLevel = e.target.value;
       }
     }
   };
